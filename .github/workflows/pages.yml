@@ -1,4 +1,4 @@
-name: Deploy Website Sekolah
+name: Validate Website and CMS
 
 on:
   push:
@@ -6,48 +6,38 @@ on:
     paths:
       - 'index.html'
       - 'wijana-playschool.css'
-      - 'docs/**'
+      - 'hatchable/**'
       - 'database/migrations/**'
+      - 'docs/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: github-pages
+  group: validate-website-cms
   cancel-in-progress: true
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Validate website entry point
+      - name: Validate website entry point and design asset
         run: |
           test -s index.html
           test -s wijana-playschool.css
           grep -q '<html lang="id">' index.html
           grep -q 'KB/TK WIJANA SEJATI' index.html
           grep -q 'wijana-playschool.css' index.html
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - name: Upload website
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Validate CMS endpoint syntax
+        run: |
+          node --input-type=module --check < hatchable/api/public-cms.js
+          node --input-type=module --check < hatchable/api/admin-cms.js
+      - name: Validate PostgreSQL migration presence
+        run: |
+          test -s database/migrations/0002_school_cms_core.sql
+          grep -q 'CREATE TABLE IF NOT EXISTS cms_content' database/migrations/0002_school_cms_core.sql
+          grep -q 'CREATE TABLE IF NOT EXISTS cms_audit_log' database/migrations/0002_school_cms_core.sql
