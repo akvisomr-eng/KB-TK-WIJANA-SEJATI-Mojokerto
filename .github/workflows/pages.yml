@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'wijana-playschool.css'
+      - 'docs/**'
+      - 'database/migrations/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -26,10 +29,14 @@ jobs:
       - name: Validate website entry point
         run: |
           test -s index.html
+          test -s wijana-playschool.css
           grep -q '<html lang="id">' index.html
           grep -q 'KB/TK WIJANA SEJATI' index.html
+          grep -q 'wijana-playschool.css' index.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
