@@ -9,6 +9,7 @@ on:
       - 'hatchable/**'
       - 'database/migrations/**'
       - 'docs/**'
+      - 'README.md'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
