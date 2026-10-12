@@ -1,0 +1,20 @@
+/* Playschool-inspired native adaptation for the static website and Hatchable frontend. */
+:root{--ink:#273746;--green:#176b67;--mint:#dff4ed;--cream:#fffaf2;--yellow:#ffb347;--coral:#ed5b70;--muted:#657783;--line:#f0e3d7;--white:#fff;--shadow:0 18px 50px rgba(39,55,70,.10)}
+body{background:var(--cream);font-family:"Nunito Sans",Nunito,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.brand-mark,.logo{background:var(--coral);border-radius:50% 50% 44% 44%;box-shadow:0 7px 0 rgba(237,91,112,.14)}
+.nav nav a,.links a{transition:color .18s ease}.nav nav a:hover,.links a:hover,.footer a:hover{color:var(--coral)}
+.btn{transition:transform .18s ease,box-shadow .18s ease;border-radius:999px}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(39,55,70,.12)}
+.dark,.primary{background:var(--coral);color:#fff}.light,.outline{border-color:#d6e4df;background:#fff}.yellow{background:var(--yellow);color:#273746}
+.eyebrow,.kicker{background:#fff0e8;border-color:#f7d4c4;color:#a84d40}.hero h1 em{color:var(--coral)}
+.art,.visual{background:#dff4ed;border:1px solid rgba(23,107,103,.08)}.sun{background:#ffcf70}.hill{background:#86c9b4}.hill.h2{background:#3d9d8e}
+.tag,.mini{border-radius:20px 20px 20px 5px}
+.cards article,.card,.modules article,.module,.steps article,.phase{border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 9px 25px rgba(39,55,70,.035);transition:transform .2s ease,box-shadow .2s ease}
+.cards article:hover,.card:hover,.modules article:hover,.module:hover,.steps article:hover,.phase:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.cards article>span,.icon{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:18px;background:#fff0e8;font-size:26px}
+.tinted{background:#f4f9f5}.band{background:#176b67;border-radius:30px}.band h2,.band p,.band small{color:#fff}.band .btn{color:#273746}
+.modules article small,.steps article b,.module small,.phase b{color:var(--coral)}
+.contact{background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow)}
+.contact input,.contact select,.contact textarea,.form input,.form select,.form textarea{font:inherit;border:1px solid #d8e5df;border-radius:14px;background:#fffdfa;padding:13px 14px;min-height:48px}
+.contact input:focus,.contact select:focus,.contact textarea:focus,.form input:focus,.form select:focus,.form textarea:focus{outline:3px solid rgba(23,107,103,.14);border-color:var(--green)}
+.contact .btn:disabled{opacity:.65;cursor:wait;transform:none}.status,.form-note{padding:10px 12px;background:#f4f9f5;border-radius:12px}.footer{border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
